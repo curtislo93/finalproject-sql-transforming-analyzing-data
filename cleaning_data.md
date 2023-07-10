@@ -22,12 +22,14 @@ ALTER TABLE analytics
 ALTER COLUMN date TYPE date
 USING (date::date)
 
----Update both transactions and totalTransactionRevenue columns to integers
+---Update transactions column to integers
 
 ALTER TABLE all_sessions
 ALTER COLUMN transactions TYPE smallint
 USING (transactions::smallint)
 
-ALTER TABLE all_sessions
-ALTER COLUMN "totalTransactionRevenue" TYPE int8
-USING ("totalTransactionRevenue"::int8)
+---Update totlaTransactionRevenue column to numeric
+ALTER TABLE all_sessions 
+ALTER COLUMN "totalTransactionRevenue" TYPE decimal(14,2) 
+USING ("totalTransactionRevenue"::decimal(14,2))
+
