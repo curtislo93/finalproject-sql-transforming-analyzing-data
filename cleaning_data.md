@@ -23,10 +23,10 @@ ALTER COLUMN date TYPE date
 USING (date::date)
 
 ---Update both transactions and totalTransactionRevenue columns to integers
+
 ALTER TABLE all_sessions
 ALTER COLUMN transactions TYPE smallint
 USING (transactions::smallint)
-
 
 ALTER TABLE all_sessions
 ALTER COLUMN "totalTransactionRevenue" TYPE int8
