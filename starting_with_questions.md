@@ -5,15 +5,16 @@ Answer the following questions and provide the SQL queries used to find the answ
 
 
 ***SQL Queries:
-
+```
 SELECT country, sum("totalTransactionRevenue") AS TotalTransactionRevenue
 FROM all_sessions 
 WHERE "totalTransactionRevenue" IS NOT NULL
 GROUP BY country
 ORDER BY TotalTransactionRevenue DESC
-
+```
 ***Answer:
-USA has 
+
+USA has the highest level of transaction revenues on the site.
 
 
 
