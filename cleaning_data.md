@@ -27,6 +27,7 @@ ALTER TABLE all_sessions
 ALTER COLUMN transactions TYPE smallint
 USING (transactions::smallint)
 
+
 ALTER TABLE all_sessions
 ALTER COLUMN "totalTransactionRevenue" TYPE int8
 USING ("totalTransactionRevenue"::int8)
