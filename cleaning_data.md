@@ -21,3 +21,12 @@ SET unit_price = unit_price * 0.000001
 ALTER TABLE analytics
 ALTER COLUMN date TYPE date
 USING (date::date)
+
+---Update both transactions and totalTransactionRevenue columns to integers
+ALTER TABLE all_sessions
+ALTER COLUMN transactions TYPE smallint
+USING (transactions::smallint)
+
+ALTER TABLE all_sessions
+ALTER COLUMN "totalTransactionRevenue" TYPE int8
+USING ("totalTransactionRevenue"::int8)
