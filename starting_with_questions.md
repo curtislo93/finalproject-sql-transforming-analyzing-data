@@ -32,8 +32,28 @@ San Francisco has the highest level of transaction reveneues on the site.
 
 
 SQL Queries:
-
-
+_This would be for the breakdown by country._
+```
+SELECT als.country, CAST(AVG(p."orderedQuantity") AS Numeric(14,2)) AS AvgQtyOrdered
+FROM all_sessions als
+FULL OUTER JOIN products p
+	ON p."SKU" = als."productSKU"
+WHERE city != 'not available in demo dataset' AND city != '(not set)'
+GROUP BY als.country
+HAVING AVG(p."orderedQuantity") IS NOT NULL
+ORDER BY als.country
+```
+_This would be for the breakdown by city._
+```
+SELECT als.city, CAST(AVG(p."orderedQuantity") AS Numeric(14,2)) AS AvgQtyOrdered
+FROM all_sessions als
+FULL OUTER JOIN products p
+	ON p."SKU" = als."productSKU"
+WHERE city != 'not available in demo dataset' AND city != '(not set)'
+GROUP BY als.city
+HAVING AVG(p."orderedQuantity") IS NOT NULL
+ORDER BY als.city
+```
 
 Answer:
 
