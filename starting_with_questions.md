@@ -20,6 +20,7 @@ WHERE
 	city != 'not available in demo dataset'
 GROUP BY city
 ORDER BY TotalTransactionRevenue DESC
+LIMIT 5
 ```
 
 ***Answer:
