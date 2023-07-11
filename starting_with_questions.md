@@ -32,6 +32,7 @@ San Francisco has the highest level of transaction reveneues on the site.
 
 
 SQL Queries:
+
 _This would be for the breakdown by country._
 ```
 SELECT als.country, CAST(AVG(p."orderedQuantity") AS Numeric(14,2)) AS AvgQtyOrdered
@@ -65,25 +66,62 @@ Answer:
 
 
 SQL Queries:
-
+```
+SELECT 
+	als."v2ProductCategory", als.country, als.city,
+	sum(p."orderedQuantity") AS TotalQtyOrdered
+FROM all_sessions als
+FULL OUTER JOIN products p
+	ON p."SKU" = als."productSKU"
+WHERE city != 'not available in demo dataset' AND city != '(not set)'
+GROUP BY als."v2ProductCategory", als.country, als.city
+HAVING SUM(p."orderedQuantity") IS NOT NULL
+ORDER BY TotalQtyOrdered DESC
+```
 
 
 Answer:
-
-
-
+Looks like the types of product categories people are interested in are Nest and Office. Most are located in California (Sunnyvale, Palo Alto, San Francisco, Mountain View...)
 
 
 **Question 4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
 
 
 SQL Queries:
+```
+WITH cte1 AS
+(	SELECT 
+		als."v2ProductName",
+		als.country,
+		sum(p."orderedQuantity") AS TotalQtyOrdered
+	FROM all_sessions als
+	FULL OUTER JOIN products p
+		ON p."SKU" = als."productSKU"
+	WHERE 
+		city != 'not available in demo dataset' AND
+		city != '(not set)' 
+	GROUP BY als."v2ProductName", als.country
+	HAVING SUM(p."orderedQuantity") IS NOT NULL
+),
+cte2 AS 
+( 	SELECT 
+		country,
+	 	MAX(TotalQtyOrdered) AS TopQtyOrdered
+	 FROM cte1
+	 GROUP BY country
+)
 
-
+SELECT cte1."v2ProductName", cte1.country, cte2.TopQtyOrdered 
+FROM cte1
+INNER JOIN cte2
+	 ON cte1.country = cte2.country AND cte1.TotalQtyOrdered = cte2.TopQtyOrdered
+ORDER BY cte2.TopQtyOrdered DESC
+```
+_For cities, replace 'country' with 'city' and rerun the code._
 
 Answer:
 
-
+Most countries and cities' top-selling product is the Google Kick Ball. The pattern worth noting is that there are tons of cities with the EXACT same amount of the quantity, meaning that there is reasonable doubt that the data was collected correctly.
 
 
 
