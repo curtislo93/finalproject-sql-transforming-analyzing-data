@@ -12,11 +12,20 @@ WHERE "totalTransactionRevenue" IS NOT NULL
 GROUP BY country
 ORDER BY TotalTransactionRevenue DESC
 ```
+```
+SELECT city, sum("totalTransactionRevenue") AS TotalTransactionRevenue
+FROM all_sessions 
+WHERE 
+	"totalTransactionRevenue" IS NOT NULL AND
+	city != 'not available in demo dataset'
+GROUP BY city
+ORDER BY TotalTransactionRevenue DESC
+```
+
 ***Answer:
 
 USA has the highest level of transaction revenues on the site.
-
-
+San Francisco has the highest level of transaction reveneues on the site.
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
