@@ -11,7 +11,8 @@ The goal is to transform and analyze data in SQL based on an imported ecommerce 
 5. QA Process
 
 ## Results
-The database was able to provide necessary information on analytics on the orders and furthermore onto demographics. I found that the Nest Cam Indoor Security Camera (USA) was the top selling product. However, further analysis showed that this product was only the 3rd most profitable item by total revenue.
+The database was able to provide necessary information on analytics on the orders and furthermore onto demographics. I found that the Sport Bottle was the top selling product. However, further analysis showed that this product was only the 4th most profitable item by total revenue.
+The Nest Cameras (both Outdoor and Indoor) were only 3rd and 4th best selling, but generated the most revenue, likely due to their higher unit price.
 
 ## Challenges 
 Sorting and cleaning the data was confusing and hard to get started. Importing such a large dataset meant that there were tons of missing/NULL values and there was a lot of 'noise'. The 'data type' was confusing to determine and there were many columns that seemed redundant.
