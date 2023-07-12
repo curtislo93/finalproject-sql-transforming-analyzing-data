@@ -30,10 +30,15 @@ ORDER BY TotalOrderRevenue DESC
 LIMIT 5
 ```
 Answer:
+
 "Nest® Cam Outdoor Security Camera - USA"	1434496.00
+
 "Nest® Learning Thermostat 3rd Gen-USA - Stainless Steel"	1417802.00
+
 "Nest® Cam Indoor Security Camera - USA"	1359150.00
+
 "Google 17oz Stainless Steel Sport Bottle"	386898.92
+
 "Nest® Protect Smoke + CO White Wired Alarm-USA"	262794.00
 
 **Question 3: Find the top selling product by month.**
