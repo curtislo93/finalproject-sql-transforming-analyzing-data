@@ -4,10 +4,11 @@
 The goal is to transform and analyze data in SQL based on an imported ecommerce database, summarizing key points from multiple tables.
 
 ## Process
-1. Started with cleaning the data.
-2. Answered the questions to the best of my ability
-3. Create new questions with the database
-4. QA my data
+1. Importing the data
+2. Cleaning
+3. Review starter questions with queries
+4. Brainstorm and create new questions with queries
+5. QA Process
 
 ## Results
 The database was able to provide necessary information on analytics on the orders and furthermore onto demographics. I found that the Nest Cam Indoor Security Camera (USA) was the top selling product. However, further analysis showed that this product was only the 3rd most profitable item by total revenue.
