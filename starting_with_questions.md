@@ -118,12 +118,27 @@ ORDER BY cte2.TopQtyOrdered DESC
 ```
 _For cities, replace 'country' with 'city' and rerun the code._
 
+Top selling products:
+```
+SELECT 
+	als."v2ProductName",
+	sum(s.total_ordered) AS TotalQtyOrdered
+FROM all_sessions als
+FULL OUTER JOIN sales_by_sku s
+	ON s."productSKU" = als."productSKU"
+FULL OUTER JOIN products p
+	ON p."SKU" = s."productSKU"
+WHERE city != 'not available in demo dataset' AND city != '(not set)'
+GROUP BY als."v2ProductName"
+HAVING sum(s.total_ordered) IS NOT NULL
+ORDER BY TotalQtyOrdered DESC
+```
+
 Answer:
 
 Most countries and cities' top-selling product is the Nest® Cam Indoor Security Camera - USA. A further analysis on this item would show that this is one of the more profitable items overall (step 4, question 2).
 
-The pattern worth noting is that there are tons of cities with the EXACT same amount of the quantity, meaning that there is reasonable doubt that the data was collected correctly.
-
+Overall, the sport bottle sold the most while the cameras were 3rd and 4th best selling.
 
 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
