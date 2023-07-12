@@ -50,15 +50,15 @@ WITH cte1 AS
 		als."v2ProductName",
 		als."v2ProductCategory",
 		EXTRACT(MONTH FROM date) AS Month,
-		sum(p."orderedQuantity") AS TotalQtyOrdered
+		sum(s.total_ordered) AS TotalQtyOrdered
 	FROM all_sessions als
-	FULL OUTER JOIN products p
-		ON p."SKU" = als."productSKU"
+	FULL OUTER JOIN sales_by_sku s
+		ON s."productSKU" = als."productSKU"
 	WHERE 
 		city != 'not available in demo dataset' AND
 		city != '(not set)' 
 	GROUP BY als."v2ProductName", als."v2ProductCategory", als.date
-	HAVING SUM(p."orderedQuantity") IS NOT NULL
+	HAVING SUM(s.total_ordered) IS NOT NULL
 ),
 cte2 AS 
 ( 	SELECT 
