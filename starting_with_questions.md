@@ -129,8 +129,21 @@ Most countries and cities' top-selling product is the Google Kick Ball. The patt
 
 SQL Queries:
 
-
-
+_I am using the same query as Question 1_
+```
+SELECT country, sum("totalTransactionRevenue") AS TotalTransactionRevenue
+FROM all_sessions 
+WHERE "totalTransactionRevenue" IS NOT NULL
+GROUP BY country
+ORDER BY TotalTransactionRevenue DESC
+```
+```
+SELECT city, sum("totalTransactionRevenue") AS TotalTransactionRevenue
+FROM all_sessions 
+WHERE "totalTransactionRevenue" IS NOT NULL
+GROUP BY city
+ORDER BY TotalTransactionRevenue DESC
+```
 Answer:
 
 
