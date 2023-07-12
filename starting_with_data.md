@@ -1,4 +1,4 @@
-Question 1: 
+**Question 1: Find each unique product viewed by each visitor**
 
 SQL Queries:
 
