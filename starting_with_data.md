@@ -77,8 +77,7 @@ ORDER BY cte1.Month
 ```
 
 Answer:
-With the exception of August, the Google Kick Ball was the top selling product in each month.
-
+The data provided results of the ballpoint LED pen topping 4 months, the sport bottles topping 3 months, and the Nest Outdoor Cam topping 2 months. The last 3 months were spread out to different products. 
 
 Question 4: 
 
