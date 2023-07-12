@@ -69,13 +69,13 @@ SQL Queries:
 ```
 SELECT 
 	als."v2ProductCategory", als.country, als.city,
-	sum(p."orderedQuantity") AS TotalQtyOrdered
+	sum(s.total_ordered) AS TotalQtyOrdered
 FROM all_sessions als
-FULL OUTER JOIN products p
-	ON p."SKU" = als."productSKU"
+FULL OUTER JOIN sales_by_sku s
+	ON s."productSKU" = als."productSKU"
 WHERE city != 'not available in demo dataset' AND city != '(not set)'
 GROUP BY als."v2ProductCategory", als.country, als.city
-HAVING SUM(p."orderedQuantity") IS NOT NULL
+HAVING sum(s.total_ordered) IS NOT NULL
 ORDER BY TotalQtyOrdered DESC
 ```
 
