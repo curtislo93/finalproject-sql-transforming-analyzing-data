@@ -89,21 +89,20 @@ Looks like the types of product categories people are interested in are Nest and
 
 SQL Queries:
 ```
-WITH cte1 AS
+WITH cte1 AS	
 (	SELECT 
-		als."v2ProductName",
-		als.country,
-		sum(p."orderedQuantity") AS TotalQtyOrdered
+		als."v2ProductName", als.country, als.city,
+		sum(s.total_ordered) AS TotalQtyOrdered
 	FROM all_sessions als
-	FULL OUTER JOIN products p
-		ON p."SKU" = als."productSKU"
-	WHERE 
-		city != 'not available in demo dataset' AND
-		city != '(not set)' 
-	GROUP BY als."v2ProductName", als.country
-	HAVING SUM(p."orderedQuantity") IS NOT NULL
+	FULL OUTER JOIN sales_by_sku s
+		ON s."productSKU" = als."productSKU"
+ 	FULL OUTER JOIN products p
+ 		ON p."SKU" = s."productSKU"
+	WHERE city != 'not available in demo dataset' AND city != '(not set)'
+	GROUP BY als."v2ProductName", als.country, als.city
+	HAVING sum(s.total_ordered) IS NOT NULL
 ),
-cte2 AS 
+cte2 AS
 ( 	SELECT 
 		country,
 	 	MAX(TotalQtyOrdered) AS TopQtyOrdered
@@ -121,7 +120,9 @@ _For cities, replace 'country' with 'city' and rerun the code._
 
 Answer:
 
-Most countries and cities' top-selling product is the Google Kick Ball. The pattern worth noting is that there are tons of cities with the EXACT same amount of the quantity, meaning that there is reasonable doubt that the data was collected correctly.
+Most countries and cities' top-selling product is the Nest® Cam Indoor Security Camera - USA. A further analysis on this item would show that this is one of the more profitable items overall (step 4, question 2).
+
+The pattern worth noting is that there are tons of cities with the EXACT same amount of the quantity, meaning that there is reasonable doubt that the data was collected correctly.
 
 
 
