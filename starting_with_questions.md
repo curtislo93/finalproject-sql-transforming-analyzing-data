@@ -146,8 +146,7 @@ ORDER BY TotalTransactionRevenue DESC
 ```
 Answer:
 
-
-
+We can summarize it as being most profitable in the United States, however the summary of the total transaction revenue cannot be grouped by each city as a lot of the results are not listed (not available in demo dataset).
 
 
 
